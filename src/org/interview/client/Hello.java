@@ -120,6 +120,21 @@ public class Hello implements EntryPoint {
             }
         });
         
+        // Add a handler for countCallButton to add and show number of call message.
+        countCallButton.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                // Async call to CountCallService
+                countCallService.countCall(new Integer(1),new AsyncCallback<String>() {
+                            public void onFailure(Throwable caught) {
+                                // TODO Add error handler here.
+                            }
+
+                            public void onSuccess(String result) {
+                                countCallLabel.setText(result);
+                            }
+                        });)
+            }
+        });
 
         // Create a handler for the sendButton and nameField
         class MyHandler implements ClickHandler, KeyUpHandler {
