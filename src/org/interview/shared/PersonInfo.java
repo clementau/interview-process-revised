@@ -25,7 +25,14 @@ public class PersonInfo implements IsSerializable {
     public void setAddresses(ArrayList<LocationInfo> addresses) { this.addresses = addresses; }
     
     public String getName(){
-        return "";
+        StringBuilder result = new StringBuilder("Person ID: " + getPersonID()+"\n");
+        result.append(First Name: " + getFirstName()+"\n"); 
+        result.append(Last Name: " + getLastName() +"\n");
+        result.append("Address(es): \n");
+        for (LocationInfo locationInfo: getAddresses()) {
+            result.append(locationInfo.getAddress()+"\n");
+        }
+        return result;
     }
     
 }
